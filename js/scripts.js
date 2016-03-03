@@ -1,17 +1,21 @@
 var piglatin = function(word) {
-  var translatedword = word;
-  if (word[0] === "a" || word[0] === "e" || word[0] === "o" || word[0] === "u" || word[0] === "i") {
-    return word + "ay" ;
+  var vowels = ['a','e','i','o','u'];
+  for (var i = 0; i < vowels.length; i++) {
+    if(word[0] === vowels[i]) {
+
+      var startsWithVowel = true;
+      break;
+    }
   }
 
-  else if ((word[0] !== "a" || word[0] !== "e" || word[0] !== "o" || word[0] !== "u" || word[0] !== "i") && (word[1] !== "a" || word[1] !== "e" || word[1] !== "o" || word[1] !== "u" || word[1] !== "i")) {
-    return word.slice(2) + word [0] + word [1] + "ay" ;
+  if (startsWithVowel) {
+    var translatedWord = word;
+  } else {
+    var translatedWord = word.slice(1) + word [0];
   }
+  return translatedWord + "ay" ;
+};
 
-  else {
-    return word.slice(1) + word [0] + "ay" ;
-  }
-}
 
 $(document).ready(function() {
   $("form#piglatin").submit(function(event) {
@@ -24,6 +28,3 @@ $(document).ready(function() {
     event.preventDefault();
   });
 });
-
-
-// var  vowels = ['a','e','i','o','u']
